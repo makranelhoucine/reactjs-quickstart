@@ -1,51 +1,31 @@
+var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
-// plugin para copiar arquivos
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-// plugin para limpar o diretorio dist
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 
-var BUILD_DIR = path.resolve(__dirname, 'build');
-var APP_DIR = path.resolve(__dirname, 'src/app');
-
-var config = {
-  entry: APP_DIR + '/index.jsx',
-  output: {
-    path: BUILD_DIR,
-    publicPath : BUILD_DIR,
-    filename: 'bundle.js'
-  },
-  watch: true,
-  module : {
-    loaders : [
+module.exports = {
+  context: path.join(__dirname, "src"),
+  devtool: debug ? "inline-sourcemap" : null,
+  entry: "./js/client.js",
+  module: {
+    loaders: [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel'
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0'],
+          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+        }
       }
     ]
-  }, 
-  plugins: [
-     new CleanWebpackPlugin([BUILD_DIR], {        
-        verbose: true, 
-        dry: false
-      }),
-       new CopyWebpackPlugin([
-          { from: 'node_modules/bootstrap/', to: BUILD_DIR + '/bootstrap'},
-          { from: 'src/index.html', to: BUILD_DIR}
-        ],        
-        {    
-          ignore: [          
-                '*.txt',               
-                '*.md',
-                '*.json',
-                'LICENSE',
-                'Gruntfile.js'
-          ],
-          copyUnmodified: true
-        }
-      )
-  ]
+  },
+  output: {
+    path: __dirname + "/src/",
+    filename: "client.min.js"
+  },
+  plugins: debug ? [] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+  ],
 };
-
-module.exports = config;

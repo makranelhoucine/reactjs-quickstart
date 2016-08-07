@@ -12,9 +12,6 @@ class Nav extends React.Component {
     return (
       <div>
           <ul>            
-            <li>
-              <Link to="archives">Archives</Link>
-            </li>
             <li >
               <Link to="settings">Settings</Link>
             </li>
