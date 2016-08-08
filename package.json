@@ -33,10 +33,10 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --content-base src --inline --hot",
+    "dev": "./node_modules/.bin/webpack-dev-server --content-base build --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack -d --watch --display-error-details",
-    "build-nowatch" : "./node_modules/.bin/webpack -d --display-error-details"
+    "build-nowatch": "./node_modules/.bin/webpack -d --display-error-details"
   },
   "author": "",
   "license": "ISC"

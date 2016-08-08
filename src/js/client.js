@@ -7,6 +7,8 @@ import Layout from "./components/Layout"
 import Settings from "./components/Settings.jsx"
 import store from "./store"
 
+require('file?name=index.html!../index.html');
+
 const app = document.getElementById('app')
 
 ReactDOM.render(<Provider store={store}>

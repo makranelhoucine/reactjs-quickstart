@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 
 import { fetchUser } from "../actions/userActions"
 import { fetchTweets } from "../actions/tweetsActions"
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import { Button } from 'react-bootstrap';
 
 import Nav from './Nav.jsx';
 
@@ -27,7 +29,7 @@ export default class Layout extends React.Component {
     const { user, tweets } = this.props;
 
     if (!tweets.length) {
-      return <div><h1>{user.name}</h1><button onClick={this.fetchTweets.bind(this)}>load tweets</button><Nav  />{this.props.children}</div>
+      return <div><Button>Click me!</Button><h1>{user.name}</h1><button onClick={this.fetchTweets.bind(this)}>load tweets</button><Nav  />{this.props.children}</div>
     }
 
     const mappedTweets = tweets.map(tweet => <li>{tweet.text}</li>)
@@ -37,6 +39,7 @@ export default class Layout extends React.Component {
       <ul>{mappedTweets}</ul>
       <Nav  />
          {this.props.children}
+      
     </div>
   }
 }
