@@ -6,7 +6,8 @@ import { fetchTweets } from "../actions/tweetsActions"
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import { Button } from 'react-bootstrap';
 
-import Nav from './Nav.jsx';
+//import Nav from './Nav.jsx';
+import Navigation from './Navigation.jsx';
 
 
 @connect((store) => {
@@ -29,7 +30,7 @@ export default class Layout extends React.Component {
     const { user, tweets } = this.props;
 
     if (!tweets.length) {
-      return <div><Button>Click me!</Button><h1>{user.name}</h1><button onClick={this.fetchTweets.bind(this)}>load tweets</button><Nav  />{this.props.children}</div>
+      return <div><Button>Click me!</Button><h1>{user.name}</h1><button onClick={this.fetchTweets.bind(this)}>load tweets</button><Navigation  />{this.props.children}</div>
     }
 
     const mappedTweets = tweets.map(tweet => <li>{tweet.text}</li>)
@@ -37,7 +38,7 @@ export default class Layout extends React.Component {
     return <div>
       <h1>{user.name}</h1>
       <ul>{mappedTweets}</ul>
-      <Nav  />
+      <Navigation  />
          {this.props.children}
       
     </div>
