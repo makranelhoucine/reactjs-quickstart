@@ -9,12 +9,12 @@ import { NavDropdown } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 
-import { getLoggedUser } from "../actions/loggedUserActions";
+import { getLoggedUser } from "../actions/loginActions";
 
 
 @connect((store) => {
   return {
-    currentUser: store.loggedUser.currentUser
+    currentUser: store.login.currentUser
   };
 })
 
@@ -30,8 +30,8 @@ class Navigation extends React.Component {
   }  
 
   render() {   
-   
-  const { currentUser } = this.props;
+ 
+   const { currentUser } = this.props;
 
     return (
       <div>
