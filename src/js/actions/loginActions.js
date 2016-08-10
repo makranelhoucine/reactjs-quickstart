@@ -28,3 +28,14 @@ export function doLogin() {
     }
   }
 }
+
+export function logout() {
+ authenticated = false
+  return {
+    type: "LOGOUT",
+    payload: {
+      authenticated: authenticated,
+    }
+  }
+
+}

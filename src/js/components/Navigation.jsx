@@ -10,6 +10,7 @@ import { MenuItem } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 
 import { getLoggedUser } from "../actions/loginActions";
+import { logout } from "../actions/loginActions";
 
 
 @connect((store) => {
@@ -25,13 +26,17 @@ class Navigation extends React.Component {
     this.props.dispatch(getLoggedUser())
   }
 
+  logout() {
+    this.props.dispatch(logout())
+  }
+
   constructor() {
     super()    
   }  
 
   render() {   
- 
    const { currentUser } = this.props;
+
 
     return (
       <div>
@@ -53,7 +58,9 @@ class Navigation extends React.Component {
               </NavDropdown>
             </Nav>
             <Nav pullRight>
-            <NavItem eventKey={1} href="#">Welcome {currentUser.name}!</NavItem>
+              <NavDropdown eventKey={1}  title={"Welcome " +  currentUser.name + "!"}>
+                <MenuItem eventKey={1.1} onClick={this.logout.bind(this)}>Logout</MenuItem>
+              </NavDropdown>
           </Nav>
           </Navbar>
         </div>

@@ -25,7 +25,13 @@ export default function reducer(state={
           ...state,
           authenticated : action.payload.authenticated,
         }
-      }       
+      }
+      case "LOGOUT": {
+        return {
+          ...state,
+          authenticated : action.payload.authenticated,
+        }
+      }             
     }
     return state
 }
