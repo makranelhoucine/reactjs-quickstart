@@ -30,12 +30,12 @@ class Login extends React.Component {
   }
 
   render() {
-  	var divLoginStyle = {
+  	const divLoginStyle = {
 	  width: '100%',
 	  marginTop: '10%'
 
 	};
-	var innerDivLoginStyle = {
+	const innerDivLoginStyle = {
 	  width: '50%' ,
 	  margin: '0 auto'
 	};	
