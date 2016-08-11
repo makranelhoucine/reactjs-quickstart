@@ -1,3 +1,25 @@
+let today = currentDay();
+let mailList = [
+            {
+              id : 1,
+              title: "My new theory",
+              sentBy: "Albert Einsten",
+              dateTime: today,
+            },
+            {
+              id : 2,
+              title: "The dancing universe",
+              sentBy: "Marcelo Gleiser",
+              dateTime: today,
+            },
+            {
+              id : 3,
+              title: "Europa, Calisto",
+              sentBy: "Galileu Galilei",
+              dateTime: today,
+            }
+          ];
+
 function currentDay() {
 	let today = new Date();
 	let dd = today.getDate();
@@ -15,28 +37,28 @@ function currentDay() {
 }
 
 
-export function getMailList() {
-  let today = currentDay()
+export function getMailList() { 
   return {
     type: "GET_MAIL_LIST",
     payload: { 
-      		mailList : [
-      			{
-      				title: "My new theory",
-      				sentBy: "Albert Einsten",
-      				dateTime: today,
-      			},
-      			{
-      				title: "The dancing universe",
-      				sentBy: "Marcelo Gleiser",
-      				dateTime: today,
-      			},
-      			{
-      				title: "Europa, Calisto",
-      				sentBy: "Galileu Galilei",
-      				dateTime: today,
-      			}
-      		]
+      		mailList : mailList
+    }
+  }
+}
+
+export function deleteMail(id) { 
+  if(mailList && mailList.length > 0) {
+    for (let i = 0; i < mailList.length; i++) { 
+      if(mailList[i].id === id) {
+        mailList.splice(i, 1);
+        break;
+      }
+    }
+  }  
+  return {
+    type: "GET_MAIL_LIST",
+    payload: { 
+          mailList : mailList
     }
   }
 }

@@ -49,17 +49,17 @@ class Navigation extends React.Component {
             <Nav>
               <NavItem eventKey={1} href="#settings">Settings</NavItem>
               <NavItem eventKey={2} href="#">Link</NavItem>
-              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+              <NavDropdown id="dropdownAction" eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                <MenuItem id="action" eventKey={3.1}>Action</MenuItem>
+                <MenuItem id="action2" eventKey={3.2}>Another action</MenuItem>
+                <MenuItem id="action3" eventKey={3.3}>Something else here</MenuItem>
                 <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                <MenuItem id="action4" eventKey={3.3}>Separated link</MenuItem>
               </NavDropdown>
             </Nav>
             <Nav pullRight>
-              <NavDropdown eventKey={1}  title={"Welcome " +  currentUser.name + "!"}>
-                <MenuItem eventKey={1.1} onClick={this.logout.bind(this)}>Logout</MenuItem>
+              <NavDropdown id="dropdownLogout" eventKey={1}  title={"Welcome " +  currentUser.name + "!"}>
+                <MenuItem  id="logout"eventKey={1.1} onClick={this.logout.bind(this)}>Logout</MenuItem>
               </NavDropdown>
           </Nav>
           </Navbar>
