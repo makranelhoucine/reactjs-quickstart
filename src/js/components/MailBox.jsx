@@ -8,6 +8,9 @@ import { Button } from 'react-bootstrap';
 import { getMailList } from "../actions/mailActions";
 import { deleteMail } from "../actions/mailActions";
 
+import MailBoxRow from './MailBoxRow.jsx';
+
+
 
 @connect((store) => {
   return {
@@ -19,32 +22,17 @@ class MailBox extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {mailList : []};
   }
 
   componentWillMount() {
     let vo = getMailList();
     this.props.dispatch(vo)
-    console.log(vo.payload.mailList)
-    this.setState({mailList: vo.payload.mailList});
-  }
-
-  deleteMail(id) {
-    let vo = deleteMail(id);
-    this.props.dispatch(vo)
-    this.setState({mailList: vo.payload.mailList});
   }
 
 
   render() {
-  let  mailList   = this.state.mailList;
-  let mappedMail = mailList.map(mail => <tr key={mail.id}>                                
-                                <td>{mail.title}</td>
-                                <td>{mail.sentBy}</td>
-                                <td>{mail.dateTime}</td>
-                                <td><Button bsStyle="danger" onClick={this.deleteMail.bind(this, mail.id)}>Delete</Button></td>
-                                </tr>)
-
+    const { mailList } = this.props;
+    let mappedMail = mailList.map(mail =>  <MailBoxRow mail={mail} key={mail.id} />)
     return (
       <div>
         <Table responsive striped condensed hove>

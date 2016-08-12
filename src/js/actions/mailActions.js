@@ -5,18 +5,21 @@ let mailList = [
               title: "My new theory",
               sentBy: "Albert Einsten",
               dateTime: today,
+              read : false,
             },
             {
               id : 2,
               title: "The dancing universe - my new book",
               sentBy: "Marcelo Gleiser",
               dateTime: today,
+              read : false
             },
             {
               id : 3,
               title: "I've disconnected Europa, Calisto",
               sentBy: "Galileu Galilei",
               dateTime: today,
+              read : false
             }
           ];
 
@@ -55,6 +58,23 @@ export function deleteMail(id) {
       }
     }
   }  
+  return {
+    type: "GET_MAIL_LIST",
+    payload: { 
+          mailList : mailList
+    }
+  }
+}
+
+export function openMail(id) {
+  if(mailList && mailList.length > 0) {
+    for (let i = 0; i < mailList.length; i++) { 
+      if(mailList[i].id === id) {
+        mailList[i].read = true
+        break;
+      }
+    }
+  }
   return {
     type: "GET_MAIL_LIST",
     payload: { 
