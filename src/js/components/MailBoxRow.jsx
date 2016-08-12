@@ -43,25 +43,24 @@ class MailBoxRow extends React.Component {
     if(!display) {
       return null;
     }
-    const tableRowStyle = {
+    const unreadMailStyle = {
         fontWeight: "bold",
         cursor: "pointer"
     };
-    const tableRowStyle2 = {
+    const readMailStyle = {
         cursor: "pointer"
     };       
     let mail = this.state.mail;    
     let html;        
     if(mail.read) {
-      html = (<tr style={tableRowStyle2}>                                
+      html = (<tr style={readMailStyle}>                                
                   <td>{mail.title}</td>
                   <td>{mail.sentBy}</td>
                   <td>{mail.dateTime}</td>
                   <td onClick={this.deleteMail.bind(this, mail.id)}><Button bsStyle="danger" >Delete</Button></td>
                 </tr>)
     } else {
-    console.log(mail)
-     html = (<tr style={tableRowStyle}>                                
+     html = (<tr style={unreadMailStyle}>                                
                   <td onClick={this.openMail.bind(this, mail.id)}>{mail.title}</td>
                   <td onClick={this.openMail.bind(this, mail.id)}>{mail.sentBy}</td>
                   <td onClick={this.openMail.bind(this, mail.id)}>{mail.dateTime}</td>

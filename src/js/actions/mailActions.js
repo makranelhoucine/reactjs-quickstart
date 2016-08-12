@@ -16,7 +16,7 @@ let mailList = [
             },
             {
               id : 3,
-              title: "I've disconnected Europa, Calisto",
+              title: "I've discovered Europa, Calisto",
               sentBy: "Galileu Galilei",
               dateTime: today,
               read : false
