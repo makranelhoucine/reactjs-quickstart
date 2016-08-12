@@ -8,13 +8,13 @@ let mailList = [
             },
             {
               id : 2,
-              title: "The dancing universe",
+              title: "The dancing universe - my new book",
               sentBy: "Marcelo Gleiser",
               dateTime: today,
             },
             {
               id : 3,
-              title: "Europa, Calisto",
+              title: "I've disconnected Europa, Calisto",
               sentBy: "Galileu Galilei",
               dateTime: today,
             }
